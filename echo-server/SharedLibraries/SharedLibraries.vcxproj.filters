@@ -15,7 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="server.c">
+    <ClInclude Include="SharedControlHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SharedControlHandler.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

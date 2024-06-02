@@ -1,4 +1,4 @@
-#include "ControlHandler.h"
+#include "SharedControlHandler.h"
 
 #include <signal.h>
 
@@ -18,7 +18,7 @@ BOOL WINAPI SetControlHandler(VOID)
 	{
 		goto EXIT_SET_CTRL_HANDLER;
 	}
-	wprintf(L"Server Control Handler set...\n");
+	wprintf(L"Shared Control Handler set...\n");
 	bReturnValue = TRUE;
 
 EXIT_SET_CTRL_HANDLER:

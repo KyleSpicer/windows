@@ -8,7 +8,7 @@
 #include <windows.h>
 #include <wchar.h>
 
-#include "ControlHandler.h"
+#include "SharedControlHandler.h"
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -109,7 +109,7 @@ INT wmain(INT argc, WCHAR* argv[])
 			goto SERVER_SOCK_CLEANUP;
 		}
 
-		WCHAR recvBuff[DEFAULT_BUFF_LEN] = { 0 };
+		CHAR recvBuff[DEFAULT_BUFF_LEN] = { 0 };
 		int iRecvResult = 0;
 		int iSendResult = 0;
 
@@ -132,6 +132,7 @@ INT wmain(INT argc, WCHAR* argv[])
 			{
 				wprintf(L"shutdown failed:%d\n", LAST_ERROR);
 			}
+			// immediately exits
 			closesocket(ClientSocket);
 			goto CLOSE_SERVER_SOCKET;
 		}
