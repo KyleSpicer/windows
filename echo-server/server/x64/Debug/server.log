@@ -1,0 +1,7 @@
+﻿  ControlHandler.c
+C:\Users\kyled\Desktop\github\windows\echo-server\server\ControlHandler.c(21,2): warning C4013: 'wprintf' undefined; assuming extern returning int
+  server.c
+C:\Users\kyled\Desktop\github\windows\echo-server\server\server.c(116,36): warning C4133: 'function': incompatible types - from 'WCHAR [512]' to 'char *'
+C:\Users\kyled\Desktop\github\windows\echo-server\server\server.c(122,37): warning C4133: 'function': incompatible types - from 'WCHAR [512]' to 'const char *'
+  Generating Code...
+  server.vcxproj -> C:\Users\kyled\Desktop\github\windows\echo-server\x64\Debug\server.exe
