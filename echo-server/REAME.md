@@ -6,6 +6,7 @@
 1. [Start Server](#start-server)
 1. [Start Client](#start-client)
 1. [Current Status](#current-status)
+1. [Known Issues](#known-issues)
 
 ## System Requirements
 ## Start Server
