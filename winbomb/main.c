@@ -7,7 +7,7 @@ INT main(INT argc, PCHAR argv[])
 	UNREFERENCED_PARAMETER(argc);
 	UNREFERENCED_PARAMETER(argv);
 
-	DWORD dwTotalStages = 2;
+	DWORD dwTotalStages = 3;
 	DWORD dwRet = 0;
 	SIZE_T data_len = 0;
 	CHAR data[INPUTLEN] = { 0 };
@@ -25,6 +25,12 @@ INT main(INT argc, PCHAR argv[])
 	}
 
 	data_len = strlen(data);
+
+	printf("Stage %d: ", ++dwRet);
+	if (0 == Stage3(data_len))
+	{
+		goto EXIT_WINBOMB;
+	}
 
 	// Complete Last Stage
 	++dwRet;
