@@ -69,14 +69,14 @@ DWORD Stage5(SIZE_T data_len)
 	if (!arr)
 		return EXIT_FAILURE;
 
-	for (INT i = 0; i < ARRAY_LEN; i++)
+	for (INT i = 0; i < ARRAY_LEN; ++i)
 	{
 		arr[i] = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, 32);
 		if (!arr[i])
 			return EXIT_FAILURE;
 
 		snprintf(arr[i], 31, "%s", LONG_STR);
-		for (INT j = 0; j < 31; j++)
+		for (INT j = 0; j < 31; ++j)
 		{
 			arr[i][j] ^= 0x42 + i + j % 8;
 			if (arr[i][j] < 060 || (arr[i][j] > 071 && arr[i][j] < 65) || (arr[i][j] > 0x5A && arr[i][j] < 0x61) || arr[i][j] > 'z')
@@ -87,7 +87,7 @@ DWORD Stage5(SIZE_T data_len)
 	}
 
 	INT idx = MAXINT % ARRAY_LEN;
-	for (INT i = 0; i < ARRAY_LEN; i++)
+	for (INT i = 0; i < ARRAY_LEN; ++i)
 	{
 		if (i != idx)
 		{
