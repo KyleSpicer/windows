@@ -13,32 +13,32 @@ INT main(INT argc, PCHAR argv[])
 	CHAR data[INPUTLEN] = { 0 };
 
 	printf("Stage %d: ", ++dwRet);
-	if (0 == Stage1())
+	if (EXIT_FAILURE == Stage1())
 	{
 		goto EXIT_WINBOMB;
 	}
 
 	printf("Stage %d: ", ++dwRet);
-	if (0 == Stage2(data))
+	if (EXIT_FAILURE == Stage2(data))
 	{
 		goto EXIT_WINBOMB;
 	}
 
 	data_len = strlen(data);
 	printf("Stage %d: ", ++dwRet);
-	if (0 == Stage3(data_len))
+	if (EXIT_FAILURE == Stage3(data_len))
 	{
 		goto EXIT_WINBOMB;
 	}
 
 	printf("Stage %d: ", ++dwRet);
-	if (0 == Stage4(data))
+	if (EXIT_FAILURE == Stage4(data))
 	{
 		goto EXIT_WINBOMB;
 	}
 
 	printf("Stage %d: ", ++dwRet);
-	if (0 == Stage5(data_len))
+	if (EXIT_FAILURE == Stage5(data_len))
 	{
 		goto EXIT_WINBOMB;
 	}

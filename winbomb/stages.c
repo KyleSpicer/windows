@@ -5,7 +5,7 @@
 
 DWORD Stage1(VOID)
 {
-	BOOL bRet = FALSE;
+	BOOL bRet = EXIT_FAILURE;
 	CHAR input[INPUTLEN] = { 0 };
 	scanf_s(WORDY, input, INPUTLEN);
 
@@ -14,66 +14,66 @@ DWORD Stage1(VOID)
 
 	if (0 == dwRes)
 	{
-		bRet = TRUE;
+		bRet = EXIT_SUCCESS;
 	}
 	return bRet;
 } // Stage1
 
 DWORD Stage2(PCHAR data)
 {
-	BOOL bRet = FALSE;
+	BOOL bRet = EXIT_FAILURE;
 	INT data_len = scanf_s(WORDY, data, INPUTLEN - 1);
 	DWORD res = GetEnvironmentVariableA("USERNAME", un, INPUTLEN);
 	if (0 == strcmp(un, data))
 	{
 		memcpy(un, data, data_len);
-		bRet = TRUE;
+		bRet = EXIT_SUCCESS;
 	}
 	return bRet;
 } // Stage2
 
-DWORD Stage3(DWORD data_len)
+DWORD Stage3(SIZE_T data_len)
 {
-	BOOL bRet = FALSE;
+	BOOL bRet = EXIT_FAILURE;
 	scanf_s(WORDY, nd, INPUTLEN - 1);
 
-	DWORD dwLen = strlen(nd);
+	SIZE_T dwLen = strlen(nd);
 	DWORD dwVal = atoi(nd);
 
-	if (dwVal == (dwLen + data_len))
+	if (dwVal == (DWORD)(dwLen + data_len))
 	{
-		bRet = TRUE;
+		bRet = EXIT_SUCCESS;
 	}
 	return bRet;
 } // Stage3
 
 DWORD Stage4(PCHAR data)
 {
-	BOOL bRet = FALSE;
+	BOOL bRet = EXIT_FAILURE;
 	scanf_s(WORDY, nd, INPUTLEN - 1);
 	DWORD i = atoi(nd);
 	DWORD p = GetCurrentProcessId();
 
 	if (p == i)
 	{
-		bRet = TRUE;
+		bRet = EXIT_SUCCESS;
 	}
 	return bRet;
 } // Stage4
 
-DWORD Stage5(DWORD data_len)
+DWORD Stage5(SIZE_T data_len)
 {
-	BOOL bRet = FALSE;
+	BOOL bRet = EXIT_FAILURE;
 	CHAR input[INPUTLEN] = { 0 };
 	PCHAR* arr = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, ARRAY_LEN * sizeof(CHAR*));
 	if (!arr)
-		return FALSE;
+		return EXIT_FAILURE;
 
 	for (INT i = 0; i < ARRAY_LEN; i++)
 	{
 		arr[i] = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, 32);
 		if (!arr[i])
-			return FALSE;
+			return EXIT_FAILURE;
 
 		snprintf(arr[i], 31, "%s", LONG_STR);
 		for (INT j = 0; j < 31; j++)
@@ -98,7 +98,7 @@ DWORD Stage5(DWORD data_len)
 	}
 
 	if (0 == strcmp(input, arr[idx])) {
-		bRet = TRUE;
+		bRet = EXIT_SUCCESS;
 	}
 	HeapFree(GetProcessHeap(), 0, arr);
 
