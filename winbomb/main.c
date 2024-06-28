@@ -9,29 +9,34 @@ INT main(INT argc, PCHAR argv[])
 
 	DWORD dwTotalStages = 2;
 	DWORD dwRet = 0;
+	SIZE_T data_len = 0;
 	CHAR data[INPUTLEN] = { 0 };
 
 	printf("Stage %d: ", ++dwRet);
-	if (FALSE == Stage1())
+	if (0 == Stage1())
 	{
 		goto EXIT_WINBOMB;
 	}
 
 	printf("Stage %d: ", ++dwRet);
-	if (FALSE == Stage2(data))
+	if (0 == Stage2(data))
 	{
 		goto EXIT_WINBOMB;
 	}
 
+	data_len = strlen(data);
+
+	// Complete Last Stage
+	++dwRet;
 
 EXIT_WINBOMB:
-	if (dwTotalStages != dwRet)
+	if (dwTotalStages < dwRet)
 	{
-		printf("Boom!!! You blew up on stage %d.\n", dwRet);
+		printf("Congratulations! You completed %d of %d stages.\n", --dwRet, dwTotalStages);
 	}
 	else
 	{
-		printf("Congratulations! You completed %d of %d stages.\n", dwRet, dwTotalStages);
+		printf("Boom!!! You blew up on stage %d.\n", dwRet);
 	}
 
 	return dwRet;

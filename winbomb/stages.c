@@ -4,30 +4,31 @@
 #include "stages.h"
 
 
-BOOL Stage1(VOID)
+DWORD Stage1(VOID)
 {
-    BOOL bRet = FALSE;
-    CHAR input[INPUTLEN] = { 0 };
-    scanf_s(WORDY, input, INPUTLEN);
+	BOOL bRet = FALSE;
+	CHAR input[INPUTLEN] = { 0 };
+	scanf_s(WORDY, input, INPUTLEN);
 
-    DWORD dwRes = 0;
-    dwRes = strcmp(input, "pavel");
-    if (0 == dwRes)
-    {
-        bRet = TRUE;
-    }
-    return bRet;
+	DWORD dwRes = 0;
+	dwRes = strcmp(input, "pavel");
+
+	if (0 == dwRes)
+	{
+		bRet = TRUE;
+	}
+	return bRet;
 }
 
-BOOL Stage2(PCHAR data)
+DWORD Stage2(PCHAR data)
 {
-    BOOL bRet = FALSE;
-    CHAR un[INPUTLEN] = { 0 };
-    scanf_s(WORDY, data, INPUTLEN);
-    DWORD res = GetEnvironmentVariableA("USERNAME", un, INPUTLEN);
-    if (0 == strcmp(un, data))
-    {
-        bRet = TRUE;
-    }
-    return bRet;
+	BOOL bRet = FALSE;
+	CHAR un[INPUTLEN] = { 0 };
+	scanf_s(WORDY, data, INPUTLEN);
+	DWORD res = GetEnvironmentVariableA("USERNAME", un, INPUTLEN);
+	if (0 == strcmp(un, data))
+	{
+		bRet = TRUE;
+	}
+	return bRet;
 }
