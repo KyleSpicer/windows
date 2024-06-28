@@ -12,5 +12,3 @@ DWORD Stage2(PCHAR data);
 DWORD Stage3(DWORD data);
 
 /* end of file */
-
-

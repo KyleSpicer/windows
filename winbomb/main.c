@@ -7,7 +7,7 @@ INT main(INT argc, PCHAR argv[])
 	UNREFERENCED_PARAMETER(argc);
 	UNREFERENCED_PARAMETER(argv);
 
-	DWORD dwTotalStages = 4;
+	DWORD dwTotalStages = 3;
 	DWORD dwRet = 0;
 	SIZE_T data_len = 0;
 	CHAR data[INPUTLEN] = { 0 };
