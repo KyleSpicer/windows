@@ -86,8 +86,6 @@ DWORD Stage5(SIZE_T data_len)
 		}
 	}
 
-	scanf_s(WORDY, input, INPUTLEN);
-
 	INT idx = MAXINT % ARRAY_LEN;
 	for (INT i = 0; i < ARRAY_LEN; i++)
 	{
@@ -96,6 +94,7 @@ DWORD Stage5(SIZE_T data_len)
 			HeapFree(GetProcessHeap(), 0, arr[i]);
 		}
 	}
+	scanf_s(WORDY, input, INPUTLEN);
 
 	if (0 == strcmp(input, arr[idx])) {
 		bRet = EXIT_SUCCESS;
