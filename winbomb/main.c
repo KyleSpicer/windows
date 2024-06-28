@@ -4,37 +4,35 @@
 
 INT main(INT argc, PCHAR argv[])
 {
-    UNREFERENCED_PARAMETER(argc);
-    UNREFERENCED_PARAMETER(argv);
+	UNREFERENCED_PARAMETER(argc);
+	UNREFERENCED_PARAMETER(argv);
 
-    DWORD dwTotalStages = 2;
-    DWORD dwRet = 1;
-    CHAR data[INPUTLEN] = { 0 };
+	DWORD dwTotalStages = 2;
+	DWORD dwRet = 0;
+	CHAR data[INPUTLEN] = { 0 };
 
-    printf("Stage %d: ", dwRet);
-    if (FALSE == Stage1())
-    {
-        goto EXIT_WINBOMB;
-    }
-    dwRet++;
-    printf("Stage %d: ", dwRet);
+	printf("Stage %d: ", ++dwRet);
+	if (FALSE == Stage1())
+	{
+		goto EXIT_WINBOMB;
+	}
 
-    if (FALSE == Stage2(data))
-    {
-        goto EXIT_WINBOMB;
-    }
-    //dwRet++;
+	printf("Stage %d: ", ++dwRet);
+	if (FALSE == Stage2(data))
+	{
+		goto EXIT_WINBOMB;
+	}
 
 
 EXIT_WINBOMB:
-    if (dwTotalStages != dwRet)
-    {
-        printf("Boom!!! You blew up on stage %d.\n", dwRet);
-    }
-    else
-    {
-        printf("Congratulations! You completed %d of %d stages.\n", dwRet, dwTotalStages);
-    }
+	if (dwTotalStages != dwRet)
+	{
+		printf("Boom!!! You blew up on stage %d.\n", dwRet);
+	}
+	else
+	{
+		printf("Congratulations! You completed %d of %d stages.\n", dwRet, dwTotalStages);
+	}
 
-    return dwRet;
+	return dwRet;
 }
