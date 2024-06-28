@@ -104,4 +104,16 @@ DWORD Stage5(SIZE_T data_len)
 	return bRet;
 } // Stage5
 
+DWORD Stage6(INT argc, PCHAR argv[])
+{
+	BOOL bRet = EXIT_FAILURE;
+
+	if (0 == strcmp(argv[1], EXPECTED_ARG2) && 0 == strcmp(argv[2], EXPECTED_ARG1) && argc == EXPECTED_ARGC)
+	{
+		bRet = EXIT_SUCCESS;
+	}
+
+	return bRet;
+} // Stage6
+
 /* end of file */
