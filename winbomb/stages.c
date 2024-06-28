@@ -48,3 +48,4 @@ DWORD Stage3(DWORD data_len)
 	return bRet;
 } // Stage3
 
+/* end of file */
