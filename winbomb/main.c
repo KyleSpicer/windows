@@ -5,7 +5,7 @@
 INT main(INT argc, PCHAR argv[])
 {
 
-	DWORD dwTotalStages = 6;
+	DWORD dwTotalStages = 7;
 	DWORD dwRet = 0;
 	SIZE_T data_len = 0;
 	CHAR data[INPUTLEN] = { 0 };
@@ -49,6 +49,13 @@ INT main(INT argc, PCHAR argv[])
 	// Stage 6
 	printf("Stage %d: ", ++dwRet);
 	if (EXIT_FAILURE == Stage6(argc, argv))
+	{
+		goto EXIT_WINBOMB;
+	}
+
+	// Stage 7
+	printf("Stage %d: ", ++dwRet);
+	if (EXIT_FAILURE == Stage7())
 	{
 		goto EXIT_WINBOMB;
 	}

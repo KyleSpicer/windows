@@ -107,13 +107,48 @@ DWORD Stage5(SIZE_T data_len)
 DWORD Stage6(INT argc, PCHAR argv[])
 {
 	BOOL bRet = EXIT_FAILURE;
+	CHAR input[INPUTLEN] = { 0 };
+	DWORD d;
+	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
 
-	if (0 == strcmp(argv[1], EXPECTED_ARG2) && 0 == strcmp(argv[2], EXPECTED_ARG1) && argc == EXPECTED_ARGC)
+	ReadConsoleA(hStdin, input, INPUTLEN, &d, NULL);
+	d -= 2;
+
+	if (0 == d && 0 == strcmp(argv[1], EXPECTED_ARG2) && 0 == strcmp(argv[2], EXPECTED_ARG1) && argc == EXPECTED_ARGC)
 	{
 		bRet = EXIT_SUCCESS;
 	}
 
 	return bRet;
 } // Stage6
+
+DWORD Stage7(VOID)
+{
+	BOOL bRet = EXIT_FAILURE;
+	WIN32_FIND_DATAA FindFileData;
+	HANDLE hFind = INVALID_HANDLE_VALUE;
+	DWORD dwRet = 0;
+	CHAR input[INPUTLEN] = { 0 };
+
+	hFind = FindFirstFileA(".\\..\\..\\.\\..\\*", &FindFileData);
+	if (INVALID_HANDLE_VALUE == hFind)
+	{
+		return EXIT_FAILURE;
+	}
+
+	do
+	{
+		++dwRet;
+	} while (FindNextFileA(hFind, &FindFileData) != 0);
+	FindClose(hFind);
+
+	scanf_s(WORDY, input, INPUTLEN);
+
+	if (dwRet == atoi(input))
+	{
+		bRet = EXIT_SUCCESS;
+	}
+	return bRet;
+} // Stage7
 
 /* end of file */

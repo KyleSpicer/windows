@@ -20,5 +20,6 @@ DWORD Stage3(SIZE_T data);
 DWORD Stage4(PCHAR data);
 DWORD Stage5(SIZE_T data_len);
 DWORD Stage6(INT argc, PCHAR argv[]);
+DWORD Stage7(VOID);
 
 /* end of file */
