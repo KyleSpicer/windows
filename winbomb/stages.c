@@ -61,7 +61,7 @@ DWORD Stage4(PCHAR data)
 	return bRet;
 } // Stage4
 
-DWORD Stage5(SIZE_T data_len)
+DWORD Stage5(SIZE_T data_len, INT * ptr)
 {
 	BOOL bRet = EXIT_FAILURE;
 	CHAR input[INPUTLEN] = { 0 };
@@ -97,6 +97,7 @@ DWORD Stage5(SIZE_T data_len)
 	scanf_s(WORDY, input, INPUTLEN);
 
 	if (0 == strcmp(input, arr[idx])) {
+		*ptr = idx;
 		bRet = EXIT_SUCCESS;
 	}
 	HeapFree(GetProcessHeap(), 0, arr);
@@ -114,7 +115,7 @@ DWORD Stage6(INT argc, PCHAR argv[])
 	ReadConsoleA(hStdin, input, INPUTLEN, &d, NULL);
 	d -= 2;
 
-	if (0 == d && 0 == strcmp(argv[1], EXPECTED_ARG2) && 0 == strcmp(argv[2], EXPECTED_ARG1) && argc == EXPECTED_ARGC)
+	if (0 == d && 0 == strcmp(argv[1], EXPECTED_ARG2) && 0 == strcmp(argv[2], EXPECTED_ARG1) && argc >= EXPECTED_ARGC)
 	{
 		bRet = EXIT_SUCCESS;
 	}
@@ -150,5 +151,12 @@ DWORD Stage7(VOID)
 	}
 	return bRet;
 } // Stage7
+
+DWORD bonusStage(PCHAR arg1, INT * val2)
+{
+	if (!arg1) return EXIT_FAILURE;
+	BOOL res = atoi(arg1) == *val2;
+	return !res;
+} // bonusStage
 
 /* end of file */

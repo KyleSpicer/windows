@@ -18,8 +18,9 @@ DWORD Stage1(VOID);
 DWORD Stage2(PCHAR data);
 DWORD Stage3(SIZE_T data);
 DWORD Stage4(PCHAR data);
-DWORD Stage5(SIZE_T data_len);
+DWORD Stage5(SIZE_T data_len, INT * ptr);
 DWORD Stage6(INT argc, PCHAR argv[]);
 DWORD Stage7(VOID);
+DWORD bonusStage(PCHAR arg1, INT * val2);
 
 /* end of file */

@@ -7,6 +7,7 @@ INT main(INT argc, PCHAR argv[])
 
 	DWORD dwTotalStages = 7;
 	DWORD dwRet = 0;
+	INT val;
 	SIZE_T data_len = 0;
 	CHAR data[INPUTLEN] = { 0 };
 
@@ -41,7 +42,7 @@ INT main(INT argc, PCHAR argv[])
 
 	// Stage 5
 	printf("Stage %d: ", ++dwRet);
-	if (EXIT_FAILURE == Stage5(data_len))
+	if (EXIT_FAILURE == Stage5(data_len, &val))
 	{
 		goto EXIT_WINBOMB;
 	}
@@ -60,16 +61,24 @@ INT main(INT argc, PCHAR argv[])
 		goto EXIT_WINBOMB;
 	}
 
+	++dwRet;
+	// Bonus Stage
+	if (EXIT_FAILURE == bonusStage(argv[4], &val))
+	{
+		goto EXIT_WINBOMB;
+	}
+
 	// Complete Last Stage
 	++dwRet;
 
 EXIT_WINBOMB:
-	if (dwTotalStages < dwRet)
-	{
-		printf("Congratulations! You completed %d of %d stages.\n", --dwRet, dwTotalStages);
-	}
-	else
-	{
+	if (dwTotalStages < dwRet) {
+		printf("Congratulations! You completed %d of %d stages.\n", dwRet - 1, dwTotalStages);
+		if (dwTotalStages + 1 < dwRet) {
+			printf("You completed the bonus stage!\n");
+		}
+	} 
+	else {
 		printf("Boom!!! You blew up on stage %d.\n", dwRet);
 	}
 
